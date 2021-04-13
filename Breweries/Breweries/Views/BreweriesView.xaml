@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Breweries.Views.BreweriesView"
+             Title="Breweries">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#f2f2f2">
+
+            <StackLayout x:Name="BreweriesList" VerticalOptions="StartAndExpand">
+
+                <SearchBar x:Name="searchBar" Placeholder="Search breweries..." 
+                           SearchCommand="{Binding SearchBreweries}"
+                           SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                           Margin="0,10,0,0"/>
+
+                <Label x:Name="ErrorLabel" Text="Error loading breweries. Check internet connection and try again!" HorizontalOptions="Center" Margin="20" IsVisible="{Binding ErrorLabelVisible}"/>
+
+                <ListView ItemsSource="{Binding Breweries}"
+                      HasUnevenRows="True"
+                      CachingStrategy="RecycleElement"
+                      ItemTapped="ListView_ItemTapped"
+                      IsVisible="{Binding BreweryListVisible}">
+                    <ListView.ItemTemplate>
+                        
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="10, 5, 10, 5"
+                                   BackgroundColor="White">
+                                    <Label Text="{Binding Name}"/>
+
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

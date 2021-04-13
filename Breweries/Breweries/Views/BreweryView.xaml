@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Breweries.Views.BreweryView"
+             Title="{Binding Brewery.Name}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#f2f2f2">
+
+                <!--Basic Information-->
+                <Frame Margin="10, 5, 10, 5" BackgroundColor="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Text="Basic Information" FontSize="Large"/>
+
+                        <Label Grid.Row="1" Text="Type" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="{Binding Brewery.Brewery_Type}"/>
+
+                        <Label Grid.Row="3" Text="Phone" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="4" TextColor="Blue" Text="{Binding Brewery.Phone}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PhoneTappedCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label Grid.Row="5" Text="Website" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="6" Text="{Binding Brewery.Website_Url}" TextColor="Blue">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding WebsiteTappedCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label Grid.Row="7" Text="Address" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="8" TextColor="Blue" Text="{Binding Brewery.Street}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddressTappedCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Row="9" TextColor="Blue">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddressTappedCommand}"/>
+                            </Label.GestureRecognizers>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Brewery.City}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="{Binding Brewery.State}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding Brewery.Postal_Code}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
